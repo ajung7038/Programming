@@ -1,0 +1,21 @@
+# 프린터 큐
+import sys
+from collections import deque
+repeat=int(input()) # 테스트케이스의 수
+
+for i in range(repeat):
+    N, M=int(sys.stdin.readline().split()) # 문서 개수, 위치
+    star=int(sys.stdin.readline().split()) # 중요도
+
+    1 0
+    중요도 클수록 빨리 출력
+
+    4개 -> [1, 2, 3, 4] ->[3] [2] [1] [0] 순으로 출력, 3은 [2], 정답은 2
+
+    6개 -> [119111] -> [2][01345] 2
+    
+    lst=deque()
+    rank=[]
+    for j in star:
+        lst.append(j)
+    if 
