@@ -1,22 +1,26 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        int N = scan.nextInt(); // 정수의 개수
-        int[] num = new int[N]; // 정수 값
-        int v; // 찾고자 하는 정수의 값
-        int count = 0; // v의 개수
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+
+        int N = Integer.parseInt(br.readLine());
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int V = Integer.parseInt(br.readLine());
+        int count = 0;
+
+        int arr[] = new int[N];
 
         for (int i=0; i<N; i++) {
-            num[i] = scan.nextInt();
+            arr[i] = Integer.parseInt(st.nextToken());
         }
 
-        v = scan.nextInt(); // v값 받아오기
-
-        for (int i=0; i<N; i++) {
-            if (num[i] == v)
-                count ++;
+        for (int i : arr) {
+            if (i == V) count+=1;
         }
 
         System.out.println(count);
