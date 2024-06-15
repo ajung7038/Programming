@@ -1,35 +1,32 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
-    
-    // 평균 구하기
+    // 최댓값 고르기 => M
+    // 점수 조작 => 점수/M*100
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-    /*
-    -- 입력 --
-     시험을 본 과목의 개수
-     각 과목의 시험 성적
-    */
-    
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
+        double num, max = 0;
+        double[] numArr = new double[N];
 
-        int count = scan.nextInt(); // count : 시험을 본 과목의 개수
-        int numArr[] = new int[count]; // scanner (배열) : 각 과목의 시험 성적
-        int maxSc = 0; // maxSc : max 값 저장 변수 선언
-        double sum = 0; // sum : 평균을 구하기 위한 합
-        
-        // max 값 구하기
-        for (int i = 0; i<count; i++) {
-            numArr[i] = scan.nextInt();
-            if (numArr[i]>maxSc) {
-                maxSc = numArr[i];
-            }
+        for (int i=0; i<N; i++) {
+            num = Integer.parseInt(st.nextToken());
+            if (max < num) max = num;
+            numArr[i] = num;
         }
 
-        for (int i=0; i<count; i++) {
-            // sum = (double)시험 성적/maxSc*100 * 캐스팅 필수 *
-            sum += (double)numArr[i]/maxSc * 100;
+        double sum = 0;
+
+        // 점수 조작
+        for (int i=0; i<numArr.length; i++) {
+            sum += numArr[i]/max*100;
         }
-         System.out.println(sum/count);
+
+        System.out.println(sum/N);
     }
 }
