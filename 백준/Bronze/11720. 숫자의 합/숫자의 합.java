@@ -1,23 +1,19 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
-    // 숫자의 합 구하기
-    // -- 입력 --
-    // 숫자의 개수
-    // 공백 없이 주어진 N개의 숫자
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
 
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
+        String nums = br.readLine();
+        int num, sum = 0;
 
-        int count = scan.nextInt(); // 숫자의 개수
-        String num = scan.next(); // 공백 없이 주어진 숫자
-        
-        int sum = 0; // 숫자 합
-        
-        char numArr[] = num.toCharArray(); // 문자 배열 생성
-
-        for (int i=0; i<numArr.length; i++) {
-            sum += numArr[i] - '0';
+        for (int i=0; i<N; i++) {
+            num = Integer.parseInt(String.valueOf(nums.charAt(i)));
+            sum += num;
         }
 
         System.out.println(sum);
